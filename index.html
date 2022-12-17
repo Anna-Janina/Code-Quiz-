@@ -7,21 +7,39 @@
     <title>Code Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
     <sectionUpper class="upper-container">
         <div class="upper-box">
-        <h1 class="timer"></h1>
-            <div class="time-text">TIME LEFT</div>
-            <div class="seconds-left">15 seconds</div>
+            <div id="time-left" class="time-text">TIME LEFT</div>
+            <div class="seconds-left">40 seconds</div>
+    
+            <div class="scores">
+            <div id="highscores-link">View high scores</div>  
         </div>
-
-       
     </sectionUpper>
+
     <sectionLower class="lower-container">
-        <!-- Start Quiz button -->
-        <div class="start-button"><button>Start Quiz</button></div>
-
-
+        <div id="controls" class="controls">
+            <h1 class="quiz-question">Quiz question</h1>
+                <div class="answer-button">
+                    <button class="button">Answer 1</button>
+                    <button class="button">Answer 2</button>
+                    <button class="button">Answer 3</button>
+                    <button class="button">Answer 4</button>
+                </div>
+             <div id="score-container" class="hide">
+                <form id="submit-form">
+                    <h3 id="your-score"></h3>
+                    <label id="name-label">Enter your initials to save the score:</label>
+                    <input type="text" id="name-field" maxlength="3" placeholder="Enter your initials" />
+                    <button id="submit-button">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div id="start-btn" class="start-button"><button>Start Quiz</button></div>
     </sectionLower>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
