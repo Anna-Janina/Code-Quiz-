@@ -10,9 +10,11 @@
 
 <body>
     <sectionUpper class="upper-container">
+        <div id="homescreen" class="home-screen"></div>
+    
         <div class="upper-box">
             <div id="time-left" class="time-text">TIME LEFT</div>
-            <div class="seconds-left">40 seconds</div>
+            <div class="seconds-left" id="seconds-left"></div>
     
             <div class="scores">
             <div id="high-scores-link">View high scores</div>  
@@ -20,7 +22,7 @@
     </sectionUpper>
 
     <sectionLower class="lower-container">
-        <div id="controls" class="controls">
+        <div id="controls" class="controls hide">
             <h1 class="quiz-question">Quiz question</h1>
                 <div class="answer-button">
                     <button class="button">Answer 1</button>
@@ -41,6 +43,7 @@
         <button id="start-btn" class="start-button">Start Quiz</button> 
     </sectionLower>
 
+    <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

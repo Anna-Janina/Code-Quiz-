@@ -1,42 +1,3 @@
-var questions = [
-    {
-        question: 'What does JS stands for?',
-        answers: [
-            { text: 'JavaScrip', yay: true},
-            { text: 'No clue', nope: false},
-            { text: 'Jil Sander', nope: false},
-            { text: 'New show on Netflix', nope: false}
-        ]
-    },
-    {
-        question: 'What is Python?',
-        answers: [
-            { text: 'Dangerous snake', nope: false},
-            { text: 'Programming language', yay: true},
-            { text: 'Cute snake', nope: false},
-            { text: 'Fancy shoe brand', nope: false}
-        ]
-    }, 
-    {
-        question: 'HTML stands for?',
-        answer: [
-            { text: 'Hyper Text Makeup Lipstick', nope: false},
-            { text: 'Hyper Text Mouth Language', nope: false},
-            { text: 'Hyper Text Markup Language', yay: true},
-            { text: 'Hyper Text Moschino Label', nope: false}
-        ]
-    },
-    {
-        question: 'CSS stands for?',
-        answer: [
-            { text: 'Caroline Snake Shoes', nope: false},
-            { text: 'Christian Slater Son', nope: false},
-            { text: 'No idea', nope: false},
-            { text: 'Cascading Style Sheets', yay: true}
-        ]
-    }
-]
-
 var timeLeft = document.getElementById('#time-left');
 var secondsLeft = document.getElementById('seconds-left');
 var highScoreLink = document.getElementById('high-scores-link');
@@ -47,8 +8,16 @@ var submitForm = document.getElementById('#submit-form');
 var yourScore = document.getElementById('your-score');
 var nameLabel = document.getElementById('name-label')
 var startButtonQuiz = document.getElementById('start-btn');
+var controls = document.getElementById('controls');
 var currentQuestionIndex;
-var shuffledQuestions;
+var time = questions.length * 15;
+let timerId;
+
+// funct to start game
+// funct to get each question
+// funct to allow user to click on answer
+// funct to start timer
+// funct to end game
 
 
 // Start button for the first question and next button to display
@@ -58,28 +27,79 @@ nextButton.addEventListener("click", () => {
     nextQuestion()
 });
 
-// Countdown 
-function secondsLeft() {
-    timeLeft--;
-    if (timeLeft <= 0) {
-        saveScore();
-    }  else {
-        gameOver('GAME OVER')
-    }
-};
+// // Countdown 
+// function secondsLeft() {
+//     timeLeft--;
+//     if (timeLeft <= 0) {
+//         saveScore();
+//     }  else {
+//         gameOver('GAME OVER')
+//     }
+// };
 
 
 // Start quiz
 function startGame(){
-    timeLeft = setTimeout(secondsLeft, 4000);
-    shuffledQuestions = questions.sort(() => Math.random() * secondsLeft.length)
-    currentQuestionIndex = 0
-    return yourScore
-    
+    // after btn click, hide the home page
+
+    // TODO add this id name when html has been refactored
+    var homescreen = document.querySelector('.home-screen')
+    homescreen.setAttribute('class', 'hide')
+
+    // remobve hide class from questions
+    controls.removeAttribute('class')
+
+    // start timer
+    timerId = setInterval(startClockTicking, 1000)
+
+    // dispaly time on poage
+
+    secondsLeft.textContent = time
+
+    askQuestion()
+}
+
+function askQuestion() {
+    // add var to get the current question object from the questions array 
+
+    // update ttile elemenrt with the current question 
+
+    // for loop over the choices 
+            // inside loop, create a btn for each choice, set text of buttonn as the choice, append choice to page 
+
+
+
+}
+
+function answerCicked(event) {
+    var btnEl = event.target
+
+    // check if answer was correct
+
+    // take time away if user is wrong 
+
+    // display new time on page 
+
+    // chek if we javw run out of questions
+    if (time <= 0) {
+        endGame()
+    } else {
+        askQuestion()
+    }
+
+}
+
+function startClockTicking() {
+    time--;
+    secondsLeft.textContent = time
+
+    if (time <= 0) {
+        endGame()
+    }
 }
 
 
-             
+
 // Next question   
 function nextQuestion() {
     showQuestion(currentQuestionIndex);
@@ -91,7 +111,7 @@ function saveScore() {
 
 }
 
-
+startButtonQuiz.onClick = startGame
 
 
 // function getTheAnswer() 
