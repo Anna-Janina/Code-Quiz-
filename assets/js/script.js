@@ -37,31 +37,62 @@ var questions = [
     }
 ]
 
-
+var timeLeft = document.getElementById('#time-left');
+var secondsLeft = document.getElementById('seconds-left');
+var highScoreLink = document.getElementById('high-scores-link');
+var quizQuestion = document.getElementById('quiz-question');
+var answerElement = document.getElementById('answer-button');
+var nextButton = document.getElementById('next-button');
+var submitForm = document.getElementById('#submit-form');
+var yourScore = document.getElementById('your-score');
+var nameLabel = document.getElementById('name-label')
 var startButtonQuiz = document.getElementById('start-btn');
-var questionElement = document.getElementById('question');
-var answerElement = document.getElementById('answer')
+var currentQuestionIndex;
+var shuffledQuestions;
 
-// Add event listener to generate button
-startButtonQuiz.addEventListener('click', startQuiz)
 
-function startQuiz() {
-    console.log('start')
-    
-    currentQuestionIndex = 0
+// Start button for the first question and next button to display
+startButtonQuiz.addEventListener("click", startGame);
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++
     nextQuestion()
-}
-// questionElement.classList.remove("hide")
+});
 
+// Countdown 
+function secondsLeft() {
+    timeLeft--;
+    if (timeLeft <= 0) {
+        saveScore();
+    }  else {
+        gameOver('GAME OVER')
+    }
+};
+
+
+// Start quiz
+function startGame(){
+    timeLeft = setTimeout(secondsLeft, 4000);
+    shuffledQuestions = questions.sort(() => Math.random() * secondsLeft.length)
+    currentQuestionIndex = 0
+    return yourScore
+    
+}
+
+
+             
+// Next question   
 function nextQuestion() {
-    showQuestion(currentQuestionIndex)
-}
+    showQuestion(currentQuestionIndex);
+}        
 
-function showQuestion(question) {
-    questionElement.innerText = question.question
-}
 
-function getTheAnswer() {
+// Save score
+function saveScore() {
 
 }
+
+
+
+
+// function getTheAnswer() 
 

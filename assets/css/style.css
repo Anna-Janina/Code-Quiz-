@@ -32,15 +32,21 @@ body {
   gap: 20px;
 }
 
-/* font weight doesn't work */
-.start-button {
+/* start button doesn't work */
+.start-button, .next-button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 50px;
-    font-weight: bolder;
+    font-size: 20px;
+    font-weight: bold;
     align-items: flex-end;
+    padding: 20px;
 }
 
-.answer-button, .start-button {
+.answer-button, .start-button, .next-button {
   padding: 5px 10px;  
   border-color: black;
+}
+
+#submit-form {
+    padding: 5px 20px;
+    border-color: black;
 }
