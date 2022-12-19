@@ -9,9 +9,17 @@ var yourScore = document.getElementById('your-score');
 var nameLabel = document.getElementById('name-label')
 var startButtonQuiz = document.getElementById('start-btn');
 var controls = document.getElementById('controls');
-var currentQuestionIndex;
+var currentQuestionIndex =0;
 var time = questions.length * 15;
 let timerId;
+var questionTitle = document.querySelector('#controls .quiz-question');
+var questionAnswer1 = document.querySelector('#button1');
+var questionAnswer2 = document.querySelector('#button2');
+var questionAnswer3 = document.querySelector('#button3');
+var questionAnswer4 = document.querySelector('#button4');
+var scoreContainer = document.querySelector('#score-container');
+var highScore = document.querySelector('highscore');
+
 
 // funct to start game
 // funct to get each question
@@ -22,11 +30,14 @@ let timerId;
 
 // Start button for the first question and next button to display
 startButtonQuiz.addEventListener("click", startGame);
-nextButton.addEventListener("click", () => {
-    currentQuestionIndex++
-    nextQuestion()
-});
+questionAnswer1.addEventListener("click", answerCicked);
+questionAnswer2.addEventListener("click", answerCicked);
+questionAnswer3.addEventListener("click", answerCicked);
+questionAnswer4.addEventListener("click", answerCicked);
 
+// nextButton.addEventListener("click", () => {
+//     currentQuestionIndex++
+//     nextQuestion()
 // // Countdown 
 // function secondsLeft() {
 //     timeLeft--;
@@ -41,52 +52,42 @@ nextButton.addEventListener("click", () => {
 // Start quiz
 function startGame(){
     // after btn click, hide the home page
-
     // TODO add this id name when html has been refactored
     var homescreen = document.querySelector('.home-screen')
     homescreen.setAttribute('class', 'hide')
 
     // remobve hide class from questions
     controls.removeAttribute('class')
-
-    // start timer
     timerId = setInterval(startClockTicking, 1000)
-
-    // dispaly time on poage
-
     secondsLeft.textContent = time
-
     askQuestion()
 }
 
 function askQuestion() {
     // add var to get the current question object from the questions array 
-
-    // update ttile elemenrt with the current question 
+    var currentQuestion = questions[currentQuestionIndex]
+    questionTitle.textContent = currentQuestion.question
+    questionAnswer1.textContent = currentQuestion.answers[0];
+    questionAnswer2.textContent = currentQuestion.answers[1];
+    questionAnswer3.textContent = currentQuestion.answers[2];
+    questionAnswer4.textContent = currentQuestion.answers[3];
 
     // for loop over the choices 
             // inside loop, create a btn for each choice, set text of buttonn as the choice, append choice to page 
-
-
-
 }
 
 function answerCicked(event) {
     var btnEl = event.target
-
-    // check if answer was correct
-
-    // take time away if user is wrong 
-
-    // display new time on page 
-
-    // chek if we javw run out of questions
-    if (time <= 0) {
+    var currentQuestion = questions[currentQuestionIndex]
+ if (currentQuestion.correctAnswer == btnEl.textContent) {
+    time += 20000
+ }
+    if (time <= 0 || currentQuestionIndex >= questions.length - 1) {
         endGame()
     } else {
+        currentQuestionIndex++
         askQuestion()
     }
-
 }
 
 function startClockTicking() {
@@ -98,21 +99,19 @@ function startClockTicking() {
     }
 }
 
+function endGame() {
+    scoreContainer.classList.remove('hide')  
+}
 
-
-// Next question   
-function nextQuestion() {
-    showQuestion(currentQuestionIndex);
-}        
-
+    
 
 // Save score
 function saveScore() {
-
+localStorage.setItem('highscore', time);
 }
 
 startButtonQuiz.onClick = startGame
 
 
-// function getTheAnswer() 
+
 

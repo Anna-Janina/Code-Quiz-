@@ -6,29 +6,17 @@ var questions = [
     },
     {
         question: 'What is Python?',
-        answers: [
-            { text: 'Dangerous snake', nope: false},
-            { text: 'Programming language', yay: true},
-            { text: 'Cute snake', nope: false},
-            { text: 'Fancy shoe brand', nope: false}
-        ]
+        answers: ['Dangerous snake', 'Programming language', 'Cute snake', 'Fancy shoe brand'],
+        correctAnswer: 'Programming language'
     }, 
     {
         question: 'HTML stands for?',
-        answer: [
-            { text: 'Hyper Text Makeup Lipstick', nope: false},
-            { text: 'Hyper Text Mouth Language', nope: false},
-            { text: 'Hyper Text Markup Language', yay: true},
-            { text: 'Hyper Text Moschino Label', nope: false}
-        ]
+        answer: ['Hyper Text Makeup Lipstick', 'Hyper Text Mouth Language', 'Hyper Text Markup Language', 'Hyper Text Moschino Label'],
+        correctAnswer: 'Hyper Text Markup Language'
     },
     {
         question: 'CSS stands for?',
-        answer: [
-            { text: 'Caroline Snake Shoes', nope: false},
-            { text: 'Christian Slater Son', nope: false},
-            { text: 'No idea', nope: false},
-            { text: 'Cascading Style Sheets', yay: true}
-        ]
+        answer: ['Caroline Snake Shoes', 'Christian Slater Son', 'No idea', 'Cascading Style Sheets'],
+        correctAnswer: 'Cascading Style Sheets'
     }
 ]
