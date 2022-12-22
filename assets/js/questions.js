@@ -2,7 +2,7 @@ var questions = [
     {
         question: 'What does JS stands for?',
         answers: ['JavaScript', 'No clue', 'Jil Sander', 'New show on Netflix'],
-        correctAnswer: 'javascript'
+        correctAnswer: 'JavaScript'
     },
     {
         question: 'What is Python?',
